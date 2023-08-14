@@ -366,12 +366,15 @@ template {
 
 body {
   background-color: #161616;
-  color: #ffffff;
+  color: white;
 }
 
-/* -- Nav Styling */
-
 @media (max-width: 600px) {
+  /* ----- Nav Styling ----- */
+  nav {
+    margin-bottom: 30px;
+  }
+
   nav > ul {
     list-style: none;
     display: flex;
@@ -379,5 +382,41 @@ body {
     margin: 0px;
     padding: 20px 0px;
     border-bottom: solid 1px rgb(102, 102, 102);
+  }
+
+  /* ----- About Me Section Styling ----- */
+  .about-me {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-me-picture {
+    height: 130px;
+    margin-bottom: 20px;
+    border: solid 1px white;
+    border-radius: 50%;
+  }
+
+  .about-me > p {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 3px;
+    padding: 0rem 2rem;
+  }
+
+  /* ----- Skills Section Styling ----- */
+
+  .skills {
+    background-color: #1a1a1a;
+  }
+  .skills-icons-container {
+    display: flex;
+    justify-content: space-around;
+  }
+  .skills-icons-container > img {
+    height: 2.6rem;
+    padding: 1.3rem 0rem;
   }
 }
