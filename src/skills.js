@@ -24,12 +24,15 @@ function dragging(e) {
   // 0   = 0 - (x - 203)
 }
 
+function dragEnd() {
+  isDragging = false;
+  console.log("end");
+}
+
 function animateCarousel() {
-  // for mobile devices
-  //   carousel.addEventListener("touchstart", touchStart);
-  //   carousel.addEventListener("touchmove", touchMoving);
   carousel.addEventListener("touchmove", dragging);
   carousel.addEventListener("touchstart", dragStart);
+  carousel.addEventListener("touchend", dragEnd);
 }
 
 export default animateCarousel;
