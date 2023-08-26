@@ -1,10 +1,24 @@
 const carousel = document.querySelector(".skills-icons-carousel");
+const carouselChildren = [...carousel.children];
+const cardWidth = document.querySelector(".skill-card").offsetWidth;
+const cardsPerView = Math.round(carousel.offsetWidth / cardWidth);
+console.log(cardsPerView);
 console.log(carousel);
 console.log("hi");
 
 let isDragging = false;
 let startingCursorX = null;
 let startingScrollLeft = null;
+
+// copy the last few cards from the end to the beginning of the carousel
+carouselChildren
+  .slice(-cardsPerView)
+  .reverse()
+  .forEach((card) => carousel.insertAdjacentHTML("afterbegin", card.outerHTML));
+// copy the first few cards from the beginning to the end of the carousel
+carouselChildren
+  .slice(0, cardsPerView)
+  .forEach((card) => carousel.insertAdjacentHTML("beforeend", card.outerHTML));
 
 function dragStart(e) {
   // records initial cursor position and scroll position of the carousel
