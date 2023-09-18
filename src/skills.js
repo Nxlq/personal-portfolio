@@ -6,6 +6,8 @@ console.log(cardsPerView);
 console.log(carousel);
 console.log("hi");
 
+carousel.scrollLeft = cardsPerView * cardWidth + 10 * cardsPerView;
+
 let isDragging = false;
 let startingCursorX = null;
 let startingScrollLeft = null;
