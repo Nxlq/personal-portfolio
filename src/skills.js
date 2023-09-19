@@ -6,7 +6,9 @@ console.log(cardsPerView);
 console.log(carousel);
 console.log("hi");
 
-carousel.scrollLeft = cardsPerView * cardWidth + 10 * cardsPerView;
+const initialScrollPosition = cardsPerView * cardWidth + 10 * cardsPerView;
+
+carousel.scrollLeft = initialScrollPosition;
 
 let isDragging = false;
 let startingCursorX = null;
@@ -33,9 +35,11 @@ function dragStart(e) {
 function dragging(e) {
   if (!isDragging) return;
   console.log(e, "drag");
+
   // updates scroll position of carousel based on cursor movement
   carousel.scrollLeft =
     startingScrollLeft - (e.touches[0].pageX - startingCursorX);
+
   // scroll position = initial scroll position - (dragging cursor position - initial cursor position)
   // 0   = 0 - (x - 203)
 }
@@ -45,10 +49,26 @@ function dragEnd() {
   console.log("end");
 }
 
+function infiniteScroll() {
+  console.log(carousel.scrollLeft);
+  if (carousel.scrollLeft === 0) {
+    carousel.scrollLeft = carousel.scrollWidth - 2 * initialScrollPosition + 10;
+    console.log("LEFT END");
+  }
+
+  if (carousel.scrollLeft === carousel.scrollWidth - carousel.offsetWidth) {
+    console.log("RIGHT END");
+    carousel.scrollLeft =
+      initialScrollPosition +
+      (initialScrollPosition - carousel.offsetWidth - 10);
+  }
+}
+
 function animateCarousel() {
   carousel.addEventListener("touchmove", dragging);
   carousel.addEventListener("touchstart", dragStart);
   carousel.addEventListener("touchend", dragEnd);
+  carousel.addEventListener("scroll", infiniteScroll);
 }
 
 export default animateCarousel;
