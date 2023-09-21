@@ -1,5 +1,5 @@
 const carousel = document.querySelector(".skills-icons-carousel");
-const carouselChildren = [...carousel.children];
+const carouselChildrenBeforeInserts = [...carousel.children];
 const cardWidth = document.querySelector(".skill-card").offsetWidth;
 const cardsPerView = Math.round(carousel.offsetWidth / cardWidth);
 console.log(cardsPerView);
@@ -8,21 +8,33 @@ console.log("hi");
 
 const initialScrollPosition = cardsPerView * cardWidth + 10 * cardsPerView;
 
-carousel.scrollLeft = initialScrollPosition;
+// carousel.scrollLeft = initialScrollPosition;
 
 let isDragging = false;
 let startingCursorX = null;
 let startingScrollLeft = null;
+let carouselTimeout;
+
+const autoPlay = () => {
+  // automove the carousel one card width + gap px after timer ends
+  carouselTimeout = setTimeout(() => {
+    carousel.scrollLeft += cardWidth + 9;
+  }, 2500);
+};
+// autoPlay();
 
 // copy the last few cards from the end to the beginning of the carousel
-carouselChildren
+carouselChildrenBeforeInserts
   .slice(-cardsPerView)
   .reverse()
   .forEach((card) => carousel.insertAdjacentHTML("afterbegin", card.outerHTML));
 // copy the first few cards from the beginning to the end of the carousel
-carouselChildren
+carouselChildrenBeforeInserts
   .slice(0, cardsPerView)
   .forEach((card) => carousel.insertAdjacentHTML("beforeend", card.outerHTML));
+
+const carouselChildrenAfterInserts = [...carousel.children];
+// const initialScrollPosition = carousel.scrollLeft;
 
 function dragStart(e) {
   // records initial cursor position and scroll position of the carousel
@@ -30,6 +42,10 @@ function dragStart(e) {
   isDragging = true;
   startingCursorX = e.touches[0].pageX;
   startingScrollLeft = carousel.scrollLeft;
+  carousel.classList.add("dragging");
+  carouselChildrenAfterInserts.forEach((skill) =>
+    skill.classList.remove("untouched")
+  );
 }
 
 function dragging(e) {
@@ -46,21 +62,32 @@ function dragging(e) {
 
 function dragEnd() {
   isDragging = false;
+  carousel.classList.remove("dragging");
   console.log("end");
 }
 
 function infiniteScroll() {
-  console.log(carousel.scrollLeft);
+  // if the left end of the carousel is reached
   if (carousel.scrollLeft === 0) {
+    carousel.classList.add("no-transition");
+
     carousel.scrollLeft = carousel.scrollWidth - 2 * initialScrollPosition + 10;
-    console.log("LEFT END");
+
+    carousel.classList.remove("no-transition");
   }
 
+  // if the right end of the carousel is reached
   if (carousel.scrollLeft === carousel.scrollWidth - carousel.offsetWidth) {
-    console.log("RIGHT END");
+    carousel.classList.add("no-transition");
+
     carousel.scrollLeft =
       initialScrollPosition +
       (initialScrollPosition - carousel.offsetWidth - 10);
+
+    // carousel.scrollLeft =
+    //   initialScrollPosition + cardWidth + (cardsPerView - 1) * 10;
+
+    carousel.classList.remove("no-transition");
   }
 }
 
