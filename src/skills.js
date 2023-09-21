@@ -1,3 +1,4 @@
+const sectionContainer = document.querySelector(".skills");
 const carousel = document.querySelector(".skills-icons-carousel");
 const carouselChildrenBeforeInserts = [...carousel.children];
 const cardWidth = document.querySelector(".skill-card").offsetWidth;
@@ -21,7 +22,7 @@ const autoPlay = () => {
     carousel.scrollLeft += cardWidth + 9;
   }, 2500);
 };
-// autoPlay();
+autoPlay();
 
 // copy the last few cards from the end to the beginning of the carousel
 carouselChildrenBeforeInserts
@@ -89,6 +90,17 @@ function infiniteScroll() {
 
     carousel.classList.remove("no-transition");
   }
+
+  // cancel existing timeout while scrolling
+  clearTimeout(carouselTimeout);
+
+  // autoplay carousel not being hovered over or focused by user
+  if (
+    !sectionContainer.matches(":active") ||
+    !sectionContainer.matches(":hover")
+  )
+    autoPlay();
+  // if (!sectionContainer.matches("dragging")) autoPlay();
 }
 
 function animateCarousel() {
