@@ -365,6 +365,8 @@ template {
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
+  --section-title-font-size: 2rem;
+  --section-title-font-weight: 400;
 }
 
 body {
@@ -478,5 +480,17 @@ body {
     margin-top: auto;
     padding-bottom: 0.1rem;
     padding-right: 0.2rem;
+  }
+
+  /* ----- Projects Section Styling ----- */
+
+  .section-title {
+    padding-top: 6rem;
+  }
+
+  .section-title .title-name {
+    font-size: var(--section-title-font-size);
+    font-weight: var(--section-title-font-weight);
+    margin-left: -3px;
   }
 }
