@@ -490,6 +490,12 @@ body {
 
   /* ----- Projects Section Styling ----- */
 
+  .projects__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+  }
+
   .section-title {
     padding-top: 6rem;
     padding-bottom: 2rem;
