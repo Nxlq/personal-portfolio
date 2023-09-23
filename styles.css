@@ -370,6 +370,11 @@ template {
   --section-padding: 1.5rem 20rem;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #161616;
   color: white;
@@ -487,6 +492,7 @@ body {
 
   .section-title {
     padding-top: 6rem;
+    padding-bottom: 2rem;
   }
 
   .section-title .title-name {
@@ -524,8 +530,11 @@ body {
     color: #3a3a3a;
     font-size: 1.2rem;
     max-width: 90%;
-    padding: 2rem;
+    padding: 2.5rem 2rem 2rem 2rem;
     border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
   }
 
   .project-description__container .description {
@@ -536,12 +545,31 @@ body {
     color: #111111;
     font-style: italic;
     font-weight: 400;
-    padding-top: 17px;
+    margin: 0;
+    padding-top: 1.7rem;
+    /* padding-top: 30px; */
     border-top: solid 1px #8a8a8a;
   }
 
   .project-description__container,
   .project__container > h3 {
     transform: translate(0px, -4rem);
+  }
+
+  .project-links__container {
+    display: flex;
+    font-size: 1.4rem;
+    justify-content: space-between;
+    padding-top: 2rem;
+  }
+
+  .project-links__container img {
+    height: 1.4rem;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 7px;
   }
 }
