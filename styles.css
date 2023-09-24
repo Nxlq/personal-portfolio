@@ -378,13 +378,14 @@ p {
 body {
   background-color: #161616;
   color: white;
-  padding: 0rem 1.2rem;
+  /* padding: 0rem 1.2rem; */
 }
 
 @media (max-width: 600px) {
   /* ----- Nav Styling ----- */
   nav {
     margin-bottom: 30px;
+    padding: 0rem 1.2rem;
   }
 
   nav > ul {
@@ -401,6 +402,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0rem 1.2rem;
   }
 
   .about-me-picture {
@@ -422,6 +424,7 @@ body {
 
   .skills {
     background-color: #1a1a1a;
+    padding: 0 1.2rem;
   }
   .skills-icons-carousel {
     padding: 0px;
@@ -494,17 +497,25 @@ body {
     display: flex;
     flex-direction: column;
     gap: 6rem;
+    padding: 0rem 1.2rem;
+    padding-bottom: 2rem;
   }
 
   .section-title {
     padding-top: 6rem;
     padding-bottom: 2rem;
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
   }
 
   .section-title .title-name {
     font-size: var(--section-title-font-size);
     font-weight: var(--section-title-font-weight);
     margin-left: -3px;
+  }
+
+  .section-title .title-number {
+    font-weight: 400;
   }
 
   .project__container {
@@ -521,7 +532,7 @@ body {
   }
 
   .project__container > h3 {
-    background-color: yellow;
+    background-color: #f9f366;
     color: #3a3a3a;
     text-align: center;
     font-weight: 500;
@@ -577,5 +588,78 @@ body {
     display: flex;
     align-items: center;
     gap: 7px;
+  }
+
+  .project__container:last-child {
+    border-bottom: solid 1px rgb(175, 175, 175);
+    padding-bottom: 6rem;
+  }
+
+  /* ----- Contact Section Styling ----- */
+
+  .contact {
+    background-color: #f9f366;
+    color: #1a1a1a;
+    padding: 6rem 1.2rem 6rem;
+  }
+
+  .contact .section-title {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+  }
+
+  .contact__card {
+    font-size: 1.2rem;
+    padding-top: 2rem;
+    line-height: 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    /* font-weight: 400; */
+  }
+
+  .contact-links__container svg {
+    height: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  form > * {
+    background-color: #f9f366;
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    border: solid 1px #1a1a1a;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #3a3a3a;
+  }
+
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border: solid 2px #1a1a1a;
+    box-shadow: 0 0 2px #1a1a1a;
+  }
+
+  /* ----- Footer Section Styling ----- */
+
+  footer {
+    background-color: #f9f366;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0rem 1.2rem 4rem;
+  }
+
+  footer p {
+    max-width: 60%;
+    color: #1a1a1a;
   }
 }
