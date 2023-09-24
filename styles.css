@@ -654,8 +654,9 @@ body {
     background-color: #f9f366;
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 0rem 1.2rem 4rem;
+    padding: 1rem 1.2rem 4rem;
   }
 
   footer p {
